@@ -8,34 +8,11 @@ const {
   update,
   remove,
 } = require('firebase/database');
+const { newUserDataValidation } = require('../utils/validation.js');
 
 const router = express.Router();
 const db = getDatabase();
 
-const newUserDataValidation = ({
-  name,
-  username,
-  email,
-  address = {
-    street: 'Optional',
-    suite: 'Optional',
-    city: 'Optional',
-    zipcode: 'Optional',
-  },
-}) => {
-  if (
-    !name ||
-    !username ||
-    !email ||
-    !address?.street ||
-    !address?.suite ||
-    !address?.city ||
-    !address?.zipcode
-  ) {
-    return 'Please provide all required fields';
-  }
-  return { name, username, email, address };
-};
 
 router.get('/', async (req, res) => {
   get(ref(db, 'users'))
