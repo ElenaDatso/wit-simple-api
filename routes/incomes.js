@@ -7,11 +7,11 @@ router.get('/', (req, res, next) => {
   next();
 });
 router.post('/', (req, res, next) => {
-  newDataValidation(req.body.data, incomeSchema);
+  newDataValidation(req.body, incomeSchema);
   next();
 });
 router.put('/:id', (req, res, next) => {
-  updateDataValidation(req.body.updates, incomeSchema);
+  updateDataValidation(req.body, incomeSchema);
   next();
 });
 router.delete('/:id', (req, res, next) => {
