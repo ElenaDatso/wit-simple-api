@@ -14,8 +14,10 @@ const { routeValidation } = require('./middleware');
 const { errorHandler } = require('./middleware');
 const port = process.env.PORT || 3000;
 
+// Create express app
 const app = express();
 
+// Middleware
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -27,8 +29,10 @@ app.use(dbRoutes.expenses, expensesRouter);
 app.use(dbRoutes.income, incomeRouter);
 app.use(commonRouter);
 
+// Error handling
 app.use(errorHandler);
 
+// Start server
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });

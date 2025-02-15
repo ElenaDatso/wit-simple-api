@@ -1,3 +1,4 @@
+// contains the validation functions for the data that is being sent to the server.
 const newDataValidation = (data, schema) => {
   for (const key in data) {
     if (key === 'id') {
@@ -26,6 +27,7 @@ const newDataValidation = (data, schema) => {
     }
 }}
 
+// Update data validation
 const updateDataValidation = (data, schema) => {
   for (const key in data) {
     if (typeof data[key] === 'object') {

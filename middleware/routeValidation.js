@@ -1,5 +1,6 @@
 const { dbRoutes, dbParams } = require('../schemas');
 
+// remove the last slash from the path
 const slashSlicer = (path) => {
   if (path.endsWith('/')) {
     path = path.slice(0, -1);
@@ -7,6 +8,7 @@ const slashSlicer = (path) => {
   return path;
 };
 
+// Middleware to validate the route
 module.exports = (req, res, next) => {
   if (req.path === '/') {
     return next();

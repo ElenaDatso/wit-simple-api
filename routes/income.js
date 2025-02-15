@@ -3,9 +3,7 @@ const { newDataValidation, updateDataValidation } = require('../utils');
 const { incomeSchema } = require('../schemas');
 const router = express.Router();
 
-router.get('/', (req, res, next) => {
-  next();
-});
+// validating the data for creation
 router.post('/', (req, res, next) => {
   try {
     newDataValidation(req.body, incomeSchema);
@@ -16,6 +14,8 @@ router.post('/', (req, res, next) => {
   }
   next();
 });
+
+// validating the data for update
 router.put('/:id', (req, res, next) => {
   try {
     updateDataValidation(req.body, incomeSchema);
@@ -24,9 +24,6 @@ router.put('/:id', (req, res, next) => {
       .status(error.status || 500)
       .send(error.message || 'Unknown error');
   }
-  next();
-});
-router.delete('/:id', (req, res, next) => {
   next();
 });
 

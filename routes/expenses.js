@@ -3,9 +3,7 @@ const { newDataValidation, updateDataValidation } = require('../utils');
 const { expenseSchema } = require('../schemas');
 const router = express.Router();
 
-router.get('/', (req, res, next) => {
-  next();
-});
+// validating the data for creation
 router.post('/', (req, res, next) => {
   try {
     newDataValidation(req.body, expenseSchema);
@@ -16,6 +14,8 @@ router.post('/', (req, res, next) => {
   }
   next();
 });
+
+// validating the data for update
 router.put('/:id', (req, res, next) => {
   try {
     updateDataValidation(req.body, expenseSchema);
@@ -26,8 +26,6 @@ router.put('/:id', (req, res, next) => {
   }
   next();
 });
-router.delete('/:id', (req, res, next) => {
-  next();
-});
+
 
 module.exports = router;

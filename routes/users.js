@@ -8,10 +8,7 @@ const { userSchema } = require('../schemas');
 
 const router = express.Router();
 
-router.get('/', async (req, res, next) => {
-  next();
-});
-
+// setting up the optional fields and validating the data for creation
 router.post('/', async (req, res, next) => {
   req.body = { ...req.body, ...setOptionalFields(req) };
   try {
@@ -24,6 +21,7 @@ router.post('/', async (req, res, next) => {
   next();
 });
 
+// validating the data for update
 router.put('/:id', async (req, res, next) => {
   try {
     updateDataValidation(req.body, userSchema);
@@ -32,10 +30,6 @@ router.put('/:id', async (req, res, next) => {
       .status(error.status || 500)
       .send(error.message || 'Unknown error');
   }
-  next();
-});
-
-router.delete('/:id', async (req, res, next) => {
   next();
 });
 

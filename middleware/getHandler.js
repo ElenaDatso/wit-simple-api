@@ -1,6 +1,7 @@
 const { ref, get } = require('firebase/database');
 const { db } = require('../config/init.js');
 
+// Get data from the database
 module.exports = async (req, res, next) => {
   try {
     const snapshot = await get(ref(db, req.path));

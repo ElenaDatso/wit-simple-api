@@ -1,6 +1,6 @@
 const { initializeApp } = require('firebase/app');
 const { getDatabase } = require('firebase/database');
-
+//ititialize firebase app
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
   authDomain: 'wit-simple-api.firebaseapp.com',
@@ -12,5 +12,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+
+//initialize database
 const db = getDatabase(app);
 module.exports = {app, db};

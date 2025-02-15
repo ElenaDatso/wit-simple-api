@@ -1,6 +1,7 @@
 const { ref, set, push } = require('firebase/database');
 const { db } = require('../config/init.js');
 
+// Create new data in the database
 module.exports = async (req, res, next) => {
   try {
     const newUserRef = await push(ref(db, req.path));

@@ -1,6 +1,7 @@
 const { ref, get, set, push, update, remove } = require('firebase/database');
 const { db } = require('../config/init.js');
 
+// Update data in the database
 module.exports = async (req, res, next) => {
   try {
     await update(ref(db, `${req.path}`), { ...req.body });

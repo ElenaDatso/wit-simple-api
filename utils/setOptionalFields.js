@@ -1,3 +1,4 @@
+// This function sets optional fields to default values if they are not provided in the request body.
 module.exports = (req) => {
   req.body.address = req.body.address || {};
   req.body.address.suite = req.body.address.suite || 'not set';

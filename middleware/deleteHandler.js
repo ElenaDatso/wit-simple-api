@@ -2,6 +2,7 @@
 const { ref, remove } = require('firebase/database');
 const { db } = require('../config/init.js');
 
+// Delete data from the database
 module.exports = async (req, res, next) => {
   try {
     await remove(ref(db, `${req.path}`));

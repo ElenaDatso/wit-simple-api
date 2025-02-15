@@ -1,3 +1,4 @@
+// Error handler middleware
 const errorHandler = (err, req, res, next) => {
   const statusCode =
     err.statusCode && !isNaN(err.statusCode) ? err.statusCode : 500;
