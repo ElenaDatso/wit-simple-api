@@ -6,11 +6,12 @@ const {
   commonRouter,
   usersRouter,
   expensesRouter,
-  incomesRouter,
+  incomeRouter,
   rootRouter
 } = require('./routes');
 const { dbRoutes } = require('./schemas');
 const { routeValidation } = require('./middleware');
+const { errorHandler } = require('./middleware');
 const port = process.env.PORT || 3000;
 
 const app = express();
@@ -23,8 +24,10 @@ app.use(routeValidation);
 app.use(dbRoutes.root, rootRouter);
 app.use(dbRoutes.users, usersRouter);
 app.use(dbRoutes.expenses, expensesRouter);
-app.use(dbRoutes.income, incomesRouter);
+app.use(dbRoutes.income, incomeRouter);
 app.use(commonRouter);
+
+app.use(errorHandler);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

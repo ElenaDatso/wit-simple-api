@@ -14,7 +14,6 @@ module.exports = (req, res, next) => {
   let path = slashSlicer(req.path);
   path = '/' + path.split('/')[1]
   if (!Object.values(dbRoutes).includes(path)) {
-    console.error('Invalid route');
     return res.status(404).json({ error: 'Invalid route' });
   }
   next();

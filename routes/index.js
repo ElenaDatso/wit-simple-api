@@ -1,7 +1,7 @@
 const expensesRouter = require('./expenses');
 const usersRouter = require('./users');
-const incomesRouter = require('./incomes');
+const incomeRouter = require('./income');
 const commonRouter = require('./common');
 const rootRouter = require('./root');
 
-module.exports = { expensesRouter, usersRouter, incomesRouter, commonRouter, rootRouter };
+module.exports = { expensesRouter, usersRouter, incomeRouter, commonRouter, rootRouter };

@@ -6,7 +6,6 @@ module.exports = async (req, res, next) => {
     const snapshot = await get(ref(db, req.path));
     if (snapshot.exists()) {
       res.send(snapshot.val());
-      console.log(snapshot.val());
     } else {
       res.send('No data available in the database');
     }

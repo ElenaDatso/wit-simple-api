@@ -1,5 +1,5 @@
 const { newDataValidation, updateDataValidation } = require('./validation.js');
-const commonErrorHandler = require('./errorHandler.js');
+const commonErrorHandler = require('../middleware/errorHandler.js');
 const setOptionalFields = require('./setOptionalFields.js');
 
 module.exports = {
