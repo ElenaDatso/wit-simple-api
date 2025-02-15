@@ -1,81 +1,107 @@
-### Overview
-A simple REST API using Node.js with Express for the back-end.
+# Simple REST API
+
+## Overview
+
+A simple REST API built using Node.js and Express.
 
 ## Features
 
 - **Backend:** Node.js with Express, providing a RESTful API.
-- **Database:** Firebase Firestore.
+- **Database:** Firebase Firestore for persistent data storage.
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js and npm installed on your machine.
+- Ensure you have [Node.js](https://nodejs.org/) and npm installed.
 
 ### Installation
 
-1. **Clone the repository:**
+1. Clone the repository:
    ```bash
    git clone https://github.com/ElenaDatso/wit-simple-api.git
-   cd Assignment-ReactandNode
+   cd wit-simple-api
+   ```
 
-### Install dependencies:
-bash
-Copy code
-npm install
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-### Start the development server:
-nodemon app.js
+3. Start the development server:
+   ```bash
+   nodemon index.js
+   ```
 
-### API Endpoints
-GET /api/todos - Retrieve all to-do items.
-POST /api/todos - Create a new to-do item.
-PUT /api/todos/:id - Update an existing to-do item.
-DELETE /api/todos/:id - Delete a to-do item.
+## API Endpoints
 
-### Technologies Used
-Backend: Node.js, Express
-Database: Firebase Firestore
+### '/'
+- **GET `/`** - General information.
 
+### Users
+- **GET `/users`** - Retrieve all users.
+- **POST `/users`** - Add a new user.
+- **PUT `/users/:id`** - Update an existing user by ID.
+- **DELETE `/users/:id`** - Delete a user by ID.
 
-### Backend (Node.js with Express)
-      API Endpoints: The backend provides a set of RESTful API endpoints for managing to-do items. These include:
-            GET /api/todos: Fetches all to-do items from the database.
-            POST /api/todos: Adds a new to-do item to the database.
-            PUT /api/todos/:id: Updates an existing to-do item by its ID.
-            DELETE /api/todos/:id: Deletes a to-do item by its ID.
-# Routing: 
-          The Express framework handles routing for the API endpoints, processing HTTP requests from the frontend and sending back responses.
-# Middleware: 
-          The backend uses middleware to handle tasks such as parsing JSON request bodies, handling CORS (if needed), and serving static files.
-# Database Interaction: 
-          The backend connects to a MongoDB Atlas database using Mongoose (a MongoDB object modeling tool). It performs CRUD (Create, Read, Update, Delete) operations on the to-do items stored in the database.
-          Database (MongoDB Atlas)
-# Persistent Storage: 
-          MongoDB Atlas stores all to-do items persistently. Each to-do item is stored as a document in a MongoDB collection.
+### Expenses
+- **GET `/expenses`** - Retrieve all expenses.
+- **POST `/expenses`** - Add a new expense.
+- **PUT `/expenses/:id`** - Update an existing expense by ID.
+- **DELETE `/expenses/:id`** - Delete an expense by ID.
 
-### Workflow
-#User Interaction:
-Users interact with the frontend through forms and buttons to manage their to-do items.
-When a user submits a form to add or edit a to-do item, a corresponding API call is made to the backend.
+### Income
+- **GET `/income`** - Retrieve all income.
+- **POST `/income`** - Add a new income.
+- **PUT `/income/:id`** - Update an existing income by ID.
+- **DELETE `/income/:id`** - Delete an income by ID.
 
-## API Requests:
-  The React frontend sends HTTP requests to the Express backend, depending on the user action (e.g., adding a new to-do item).
-The backend processes these requests, interacts with the MongoDB Atlas database to perform the required operation, and sends back a response.
+## Technologies Used
 
-## Data Management:
-The backend retrieves, adds, updates, or deletes to-do items in the MongoDB database.
-The frontend updates the UI based on the response from the backend, reflecting the current state of the to-do list.
+- **Backend:** Node.js, Express
+- **Database:** Firebase Firestore
 
-## Navigation:
-The application uses React Router for navigation between different pages (e.g., the homepage, the edit page). For instance, after successfully adding a new to-do item, the user is redirected to the homepage.
-## Error Handling
-The program includes basic error handling. If an API request fails (e.g., due to a network issue or server error), the application logs the error to the console and may display an error message to the user.
+## Backend Overview
+
+### API Routing
+The backend is built with Express and provides RESTful API endpoints for managing users, expenses, and income.
+
+### Middleware
+- JSON request body parsing
+- CORS handling
+- Custom validation middleware
+- Global error handling
+
+### Database Interaction
+The backend connects to **Firebase Firestore** for data storage, ensuring persistence of users, expenses, and income records.
+
+## Workflow
+
+1. **User Interaction**  
+   Users interact with the API via HTTP requests to retrieve, add, update, or delete data.
+
+2. **API Requests**  
+   The client sends HTTP requests (GET, POST, PUT, DELETE) to the Express backend, which processes the request and interacts with Firebase Firestore.
+
+3. **Data Management**  
+   The backend retrieves, modifies, or removes records from Firestore, then sends a response back to the client.
+
+4. **Error Handling**  
+   The backend includes a global error handler that logs errors and returns appropriate HTTP status codes.
 
 ## Development and Deployment
-Development Server: Developers can run a local development server for both the frontend and backend. This allows for live reloading and easy testing during development.
-Production Build: The frontend can be built into a production-ready bundle using Webpack or a similar tool, which is then served by the Node.js backend.
-### Summary
-  In summary, this program provides a fully functional to-do list application with a robust backend, a user-friendly frontend, and persistent storage. It enables users to manage their tasks effectively, with features like CRUD 
-  operations and keyword search, all while ensuring seamless communication between the frontend and backend.
-Colla
+
+### Local Development
+Run a local server using:
+```bash
+nodemon index.js
+```
+
+### Production Build
+For production, use:
+```bash
+node index.js
+```
+
+## Summary
+This project provides a simple REST API with a well-structured backend using Node.js, Express, and Firebase Firestore. It allows users to manage users, expenses, and income efficiently with full CRUD operations.
