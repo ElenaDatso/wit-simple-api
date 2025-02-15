@@ -1,46 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>API Documentation</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
-        h1, h2 { color: #333; }
-        code { background: #f4f4f4; padding: 2px 5px; border-radius: 4px; }
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        padding: 20px;
+        max-width: 800px;
+        margin: auto;
+      }
+      h1,
+      h2 {
+        color: #333;
+      }
+      pre {
+        background: #f4f4f4;
+        padding: 10px;
+        border-radius: 5px;
+      }
     </style>
-</head>
-<body>
-    <h1>REST API Documentation</h1>
-    <p>This API provides endpoints for managing users, expenses, and income.</p>
-    
+  </head>
+  <body>
+    <h1>API Documentation</h1>
+    <p>
+      This API provides access to user, expense, and income data. Below are the
+      available endpoints.
+    </p>
+
     <h2>General Endpoint</h2>
-    <ul>
-        <li><code>GET /</code> - A brief description of the REST API and available endpoints.</li>
-    </ul>
-    
+    <p>
+      <strong>GET /</strong> - Returns a brief description of the API and
+      available endpoints.
+    </p>
+
     <h2>Users Endpoints</h2>
     <ul>
-        <li><code>GET /users</code> - Retrieve all users.</li>
-        <li><code>POST /users</code> - Add a new user.</li>
-        <li><code>PUT /users/:id</code> - Update an existing user by ID.</li>
-        <li><code>DELETE /users/:id</code> - Delete a user by ID.</li>
+      <li><strong>GET /users</strong> - Retrieve all users.</li>
+      <li><strong>POST /users</strong> - Add a new user.</li>
+      <li><strong>PUT /users/:id</strong> - Update an existing user by ID.</li>
+      <li><strong>DELETE /users/:id</strong> - Delete a user by ID.</li>
     </ul>
-    
+
     <h2>Expense Endpoints</h2>
     <ul>
-        <li><code>GET /expenses</code> - Retrieve all expenses.</li>
-        <li><code>POST /expenses</code> - Add a new expense.</li>
-        <li><code>PUT /expenses/:id</code> - Update an existing expense by ID.</li>
-        <li><code>DELETE /expenses/:id</code> - Delete an expense by ID.</li>
+      <li><strong>GET /expenses</strong> - Retrieve all expenses.</li>
+      <li><strong>POST /expenses</strong> - Add a new expense.</li>
+      <li>
+        <strong>PUT /expenses/:id</strong> - Update an existing expense by ID.
+      </li>
+      <li><strong>DELETE /expenses/:id</strong> - Delete an expense by ID.</li>
     </ul>
-    
+
     <h2>Income Endpoints</h2>
     <ul>
-        <li><code>GET /income</code> - Retrieve all income.</li>
-        <li><code>POST /income</code> - Add a new income.</li>
-        <li><code>PUT /income/:id</code> - Update an existing income by ID.</li>
-        <li><code>DELETE /income/:id</code> - Delete an income by ID.</li>
+      <li><strong>GET /income</strong> - Retrieve all income.</li>
+      <li><strong>POST /income</strong> - Add a new income.</li>
+      <li>
+        <strong>PUT /income/:id</strong> - Update an existing income by ID.
+      </li>
+      <li><strong>DELETE /income/:id</strong> - Delete an income by ID.</li>
     </ul>
-</body>
+
+    <h2>Example Request</h2>
+    <pre>
+GET /users
+Response:
+{
+  "-OJ5-qUfcSRwCKED2HTj": {
+    "address": {
+      "city": "Calgary",
+      "street": "SS",
+      "suite": "Apt. 21",
+      "zipcode": "T3I 3W2"
+    },
+    "email": "qq@sozentech.com",
+    "id": "-OJ5-qUfcSRwCKED2HTj",
+    "name": "qq",
+    "username": "qqq"
+  },
+  "-OJ56Kgxm0-nrzpxFasm": {
+    "address": {
+      "city": "Calgary",
+      "street": "SS",
+      "suite": "Apt. 21",
+      "zipcode": "T3I 3W2"
+    },
+    "email": "qq@sozentech.com",
+    "id": "-OJ56Kgxm0-nrzpxFasm",
+    "name": "qq",
+    "username": "qqq"
+  }
+}
+    </pre>
+
+    <h2>Request Body Schema for POST Requests</h2>
+    <h3>Users</h3>
+    <pre>
+{
+  "address": {
+    "city": "Calgary",
+    "street": "SS",
+    "suite": "Apt. 21",
+    "zipcode": "T3I 3W2"
+  },
+  "email": "qq@sozentech.com",
+  "name": "qq",
+  "username": "qqq"
+}
+    </pre>
+    <p>Fields <strong>city, street, suite, zipcode</strong> are optional.</p>
+
+    <h3>Income</h3>
+    <pre>
+{
+  "interest": "120",
+  "others": "100",
+  "secondary_income": "700",
+  "support_payment": "40",
+  "wages": "1400"
+}
+    </pre>
+
+    <h3>Expenses</h3>
+    <pre>
+{
+  "Housing": {
+    "Rent": "600",
+    "maintenance": "100",
+    "rent_insurance": "400",
+    "storage_and_parking": "500",
+    "utilities": "200"
+  },
+  "Insurance": {
+    "health_insurance": "600",
+    "life_insurance": "400",
+    "others": "300"
+  },
+  "Payment_Obligations": {
+    "Line_of_credit": "1000",
+    "Loan": "6000",
+    "credit_card": "500",
+    "vehicle_lease": "200"
+  },
+  "Personal": {
+    "Hobbies": "200",
+    "clothing": "60",
+    "dining_out": "300",
+    "gifts_family": "40",
+    "others": "60",
+    "personal_grooming": "100",
+    "transportation": "50"
+  },
+  "Savings": {
+    "Bonds": "200",
+    "Investment_Savings": "4000",
+    "Long_term_savings": "5000",
+    "RRSP": "1000",
+    "others": "500"
+  },
+  "Utilities": {
+    "Cable": "200",
+    "Electricity": "400",
+    "Heat": "100",
+    "Internet": "300",
+    "others": "150",
+    "phone": "600",
+    "water": "400"
+  }
+}
+    </pre>
+    <p>
+      All fields are required. Do not set <strong>id</strong> field, as it is assigned
+      by the server.
+    </p>
+
+    <h2>PUT requests</h2>
+    <p>
+      For PUT requests, the request body should contain only the fields that need to
+      be updated. For example, to update the name of a user, the request body
+      should contain the <strong>name</strong> field only.
+    <h2>Contact</h2>
+    <p>
+      For any issues, please contact the API administrator at
+      <a href="mailto:elena.shcheglova@gmail.com">elena.shcheglova@gmail.com</a>.
+    </p>
+  </body>
 </html>
