@@ -26,9 +26,6 @@ app.use(dbRoutes.expenses, expensesRouter);
 app.use(dbRoutes.income, incomesRouter);
 app.use(commonRouter);
 
-app.use(express.static('public'));
-
-
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
