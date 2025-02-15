@@ -1,17 +1,21 @@
 const express = require('express');
+const { newDataValidation, updateDataValidation } = require('../utils');
+const { incomeSchema } = require('../schemas');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.send('Send all incomes');
+router.get('/', (req, res, next) => {
+  next();
 });
-router.post('/', (req, res) => {
-  res.send('Add an income');
+router.post('/', (req, res, next) => {
+  newDataValidation(req.body.data, incomeSchema);
+  next();
 });
-router.put('/:id', (req, res) => {
-  res.send('Update an income');
+router.put('/:id', (req, res, next) => {
+  updateDataValidation(req.body.updates, incomeSchema);
+  next();
 });
-router.delete('/:id', (req, res) => {
-  res.send('Delete an income');
+router.delete('/:id', (req, res, next) => {
+  next();
 });
 
 module.exports = router;
