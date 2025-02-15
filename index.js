@@ -1,32 +1,34 @@
 const express = require('express');
 require('dotenv').config();
-const db = require('./config/init.js');
+require('./config/init.js');
 const cors = require('cors');
+const {
+  commonRouter,
+  usersRouter,
+  expensesRouter,
+  incomesRouter,
+} = require('./routes');
+const { dbRoutes } = require('./schemas');
+const {routeValidation} = require('./middleware');
 
 const app = express();
+const port = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const routers = require('./routes/index.js');
-const port = 2288;
+app.use(routeValidation);
 
-app.use('/users', routers.usersRouter);
-app.use('/expenses', routers.expensesRouter);
-app.use('/income', routers.incomesRouter);
+app.use(dbRoutes.users, usersRouter);
+app.use(dbRoutes.expenses, expensesRouter);
+app.use(dbRoutes.income, incomesRouter);
 
-app.get('/', (req, res) => {
+app.use(commonRouter);
+
+app.get(dbRoutes.root, (req, res) => {
   res.send('A brief description of the REST API and Available Endpoints');
 });
-
-
-function errorHandler(err, req, res, next) {
-  console.error(err.stack);
-  res.status(err.statusCode || 500).json({ error: err.message });
-}
-
-app.use(errorHandler);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
