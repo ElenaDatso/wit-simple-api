@@ -1,4 +1,5 @@
 const { initializeApp } = require('firebase/app');
+const { getDatabase } = require('firebase/database');
 
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
@@ -11,5 +12,5 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-
-module.exports = app;
+const db = getDatabase(app);
+module.exports = {app, db};
